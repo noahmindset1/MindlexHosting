@@ -1,9 +1,9 @@
 # MindlexHosting
 Discord bot hosting!
 
-[ ] login
-[ ] panel
-[ ] use vps
+[x] login
+[x] panel
+[x] use vps
 
 ### supported languages
 ----
