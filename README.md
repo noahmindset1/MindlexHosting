@@ -1,11 +1,11 @@
 # MindlexHosting
 Discord bot hosting!
----
+----
 ### plans
 [ ] login
 [ ] panel
 [ ] use vps
-
+----
 ### supported languages
 ----
 - python
