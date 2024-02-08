@@ -1,7 +1,6 @@
 # MindlexHosting
 Discord bot hosting!
 ----
-### plans
 [ ] login
 [ ] panel
 [ ] use vps
