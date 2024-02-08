@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bot Hosting Panel</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #1f2a38;
+            color: #fff;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .container {
+            background-color: #2d3b4a;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+            width: 80%;
+            max-width: 600px;
+        }
+
+        h1 {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .upload-btn {
+            background-color: #4CAF50;
+            color: white;
+            padding: 12px 20px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            float: right;
+        }
+
+        .upload-btn:hover {
+            background-color: #45a049;
+        }
+
+        input[type="file"] {
+            display: none;
+        }
+
+        .file-label {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px 15px;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        .file-label:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Bot Hosting Panel</h1>
+        <form action="/upload" method="post" enctype="multipart/form-data">
+            <input type="file" name="file" id="file" style="display:none;">
+            <label for="file" class="file-label">Choose File</label>
+            <button type="submit" class="upload-btn"><i class="fas fa-upload"></i> Upload</button>
+        </form>
+        <hr>
+        <h2>Uploaded Files:</h2>
+        <ul>
+            {% for filename in filenames %}
+            <li>{{ filename }}</li>
+            {% endfor %}
+        </ul>
+        <hr>
+        <h2>Run Bot:</h2>
+        <form action="/run" method="post">
+            <select name="filename">
+                {% for filename in filenames %}
+                <option value="{{ filename }}">{{ filename }}</option>
+                {% endfor %}
+            </select>
+            <button type="submit"><i class="fas fa-play"></i> Run</button>
+        </form>
+    </div>
+</body>
+</html>
