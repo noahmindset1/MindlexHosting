@@ -1,0 +1,2 @@
+# MindlexHosting
+Discord bot hosting!
