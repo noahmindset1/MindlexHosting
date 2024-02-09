@@ -1,1 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bot Hosting System</title>
+    <!-- Link to the provided CSS files -->
+    <link rel="stylesheet" href="https://raw.githubusercontent.com/pterodactylmanager/PteroPanelFork/develop/public/themes/pterodactyl/css/pterodactyl.css">
+    <link rel="stylesheet" href="https://raw.githubusercontent.com/pterodactylmanager/PteroPanelFork/develop/public/themes/pterodactyl/css/terminal.css">
+    <link rel="stylesheet" href="https://raw.githubusercontent.com/pterodactylmanager/PteroPanelFork/develop/public/themes/pterodactyl/css/checkbox.css">
+    <style>
+        /* Additional styles specific to this HTML */
+        /* Excluding the login styles */
+        .terminal-btn {
+            background-color: #0967d3;
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            margin-top: 10px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="file-manager">
+            <h2>File Manager</h2>
+            <div class="file-list" id="file-list">
+                <!-- File list will be displayed here -->
+            </div>
+            <input type="file" id="file-input" multiple>
+            <button id="upload-btn">Upload</button>
+        </div>
 
+        <div class="terminal" id="terminal">
+            <!-- Terminal output will be displayed here -->
+        </div>
+        <button class="terminal-btn" id="start-python-btn">Start Python</button>
+    </div>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            // Function to handle file upload
+            function handleFileUpload(event) {
+                const fileList = event.target.files;
+                const fileContainer = document.getElementById('file-list');
+
+                fileContainer.innerHTML = '';
+
+                // Loop through the selected files and display them
+                for (const file of fileList) {
+                    const fileItem = document.createElement('div');
+                    fileItem.textContent = file.name;
+                    fileContainer.appendChild(fileItem);
+                }
+            }
+
+            // Add event listener for file input change
+            const fileInput = document.getElementById('file-input');
+            fileInput.addEventListener('change', handleFileUpload);
+
+            // Function to fetch files from the server
+            function fetchFiles() {
+                fetch('/get-files')
+                    .then(response => response.json())
+                    .then(data => {
+                        const fileContainer = document.getElementById('file-list');
+                        fileContainer.innerHTML = '';
+                        data.forEach(fileName => {
+                            const fileItem = document.createElement('div');
+                            const fileLink = document.createElement('a');
+                            fileLink.href = `/uploads/${fileName}`;
+                            fileLink.textContent = fileName;
+                            fileItem.appendChild(fileLink);
+                            fileContainer.appendChild(fileItem);
+                        });
+                    })
+                    .catch(error => console.error('Error fetching files:', error));
+            }
+
+            // Fetch files when the page loads
+            fetchFiles();
+
+            // Function to start Python code execution
+            function startPython() {
+                const terminal = document.getElementById('terminal');
+                terminal.textContent = 'Running main.py...\n';
+                fetch('/run-python', { method: 'POST' })
+                    .then(response => response.text())
+                    .then(result => {
+                        terminal.textContent += result;
+                    })
+                    .catch(error => console.error('Error running Python:', error));
+            }
+
+            // Add event listener for start Python button
+            const startPythonBtn = document.getElementById('start-python-btn');
+            startPythonBtn.addEventListener('click', startPython);
+        });
+    </script>
+</body>
+</html>
