@@ -1,138 +1,88 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Bot Panel</title>
-  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css">
+  
   <style>
-    /* Navbar */
+    :root {
+      --dark: #212529;
+      --primary: #b58900;
+    }
+    
+    body {
+      background: var(--dark);
+    }
+    
     .navbar {
-      background-color: #343a40;
-      box-shadow: 0 2px 4px rgba(0,0,0,.08);
+      background: var(--primary);
     }
-
-    .navbar-brand {
-      color: #ffffff;
-      font-weight: bold;
-    }
-
-    /* Sidenav */
-    .sidenav {
-      height: 100%;
-      width: 200px;
+    
+    .sidebar {
+      background: var(--dark);
+      color: #fff;
       position: fixed;
-      top: 56px;
+      top: 56px; 
       left: 0;
-      background-color: #343a40;
-      padding-top: 20px;
+      bottom: 0;
+      width: 250px;
     }
-
-    .sidenav a {
-      padding: 10px;
-      text-decoration: none;
-      color: #ffffff;
-      display: block;
-      transition: color 0.3s;
-    }
-
-    .sidenav a:hover {
-      color: #17a2b8;
-    }
-
-    /* Page Content */
+    
     .page-content {
-      margin-left: 200px;
+      margin-left: 250px;
       padding: 20px;
     }
-
-    .page-title {
-      color: #343a40;
-    }
-
-    /* Bot Panel */
+    
     .panel {
       position: fixed;
       top: 56px;
-      left: 200px;
-      width: calc(100% - 200px);
+      left: 250px;
+      width: calc(100% - 250px);
       height: 100%;
-      background-color: #f8f9fa;
-      z-index: 1000;
-      transition: transform 0.3s ease-in-out;
       transform: translateX(100%);
-      box-shadow: -5px 0 5px rgba(0, 0, 0, 0.1);
-      overflow-y: auto;
-      padding: 20px;
+      transition: 0.3s;
+      background: var(--dark);
+      color: #fff;
     }
-
+    
     .panel.show {
       transform: translateX(0);
     }
-
-    .bot-card {
-      cursor: pointer;
-      background-color: #17a2b8;
-      color: #ffffff;
-      padding: 20px;
-      border-radius: 8px;
-      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-      transition: background-color 0.3s;
-    }
-
-    .bot-card:hover {
-      background-color: #138496;
-    }
-
-    .panel-content {
-      color: #343a40;
-    }
+    
   </style>
+  
 </head>
+
 <body>
 
-<!-- Navbar -->
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-  <div class="container">
+  <nav class="navbar navbar-expand navbar-dark bg-primary">
     <a class="navbar-brand" href="#">Bot Panel</a>
-    <!-- Add any additional navbar content here -->
+  </nav>
+
+  <div class="sidebar">
+    <a href="#" class="active">Dashboard</a>
+    <a href="#">Servers</a>
+    <a href="#">Settings</a>
   </div>
-</nav>
 
-<!-- Sidenav -->
-<nav class="sidenav">
-  <a href="#">Link 1</a>
-  <a href="#">Link 2</a>
-  <a href="#">Link 3</a>
-  <!-- Add more links as needed -->
-</nav>
-
-<!-- Page Content -->
-<main class="page-content">
-  <div class="container">
-    <div class="row">
-      <div class="col-md-8">
-        <h1 class="page-title">Welcome to Bot Panel</h1>
-        <div class="bot-card" onclick="togglePanel()">Click here to reveal the panel</div>
-      </div>
-    </div>
+  <main class="page-content">
+    <h1>Dashboard</h1>
+    <p>Welcome to the dashboard.</p>
+    <div class="bot-card" onclick="showPanel()">Open Panel</div>
+  </main>
+  
+  <div class="panel" id="panel">
+    <h2>Bot Panel</h2>
+    <p>This is the bot panel content.</p>
   </div>
-</main>
 
-<!-- Bot Panel -->
-<div class="panel" id="panel">
-  <div class="container">
-    <h2 class="panel-content">Panel Content</h2>
-    <p class="panel-content">This is where you can display additional information, settings, or features related to your bot.</p>
-  </div>
-</div>
-
-<script>
-  function togglePanel() {
-    var panel = document.getElementById("panel");
-    panel.classList.toggle("show");
-  }
-</script>
+  <script>
+    function showPanel() {
+      document.getElementById('panel').classList.toggle('show');
+    }
+  </script>
 
 </body>
 </html>
