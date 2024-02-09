@@ -3,132 +3,136 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Servers - Bot Hosting Panel</title>
-  <!-- CSS -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.0/css/bootstrap.min.css">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css">
-  <link rel="stylesheet" href="panel.css"> <!-- Include your panel styles -->
+  <title>Bot Panel</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
   <style>
-    /* Additional styles for server list */
-    .server-box {
-      background: var(--background-color);
-      color: #fff;
-      padding: var(--server-list-padding);
-      margin-bottom: 20px;
-      border-radius: var(--server-list-radii);
+    /* Navbar */
+    .navbar {
+      background-color: #343a40;
+      box-shadow: 0 2px 4px rgba(0,0,0,.08);
+    }
+
+    .navbar-brand {
+      color: #ffffff;
+      font-weight: bold;
+    }
+
+    /* Sidenav */
+    .sidenav {
+      height: 100%;
+      width: 200px;
+      position: fixed;
+      top: 56px;
+      left: 0;
+      background-color: #343a40;
+      padding-top: 20px;
+    }
+
+    .sidenav a {
+      padding: 10px;
+      text-decoration: none;
+      color: #ffffff;
+      display: block;
+      transition: color 0.3s;
+    }
+
+    .sidenav a:hover {
+      color: #17a2b8;
+    }
+
+    /* Page Content */
+    .page-content {
+      margin-left: 200px;
+      padding: 20px;
+    }
+
+    .page-title {
+      color: #343a40;
+    }
+
+    /* Bot Panel */
+    .panel {
+      position: fixed;
+      top: 56px;
+      left: 200px;
+      width: calc(100% - 200px);
+      height: 100%;
+      background-color: #f8f9fa;
+      z-index: 1000;
+      transition: transform 0.3s ease-in-out;
+      transform: translateX(100%);
+      box-shadow: -5px 0 5px rgba(0, 0, 0, 0.1);
+      overflow-y: auto;
+      padding: 20px;
+    }
+
+    .panel.show {
+      transform: translateX(0);
+    }
+
+    .bot-card {
       cursor: pointer;
+      background-color: #17a2b8;
+      color: #ffffff;
+      padding: 20px;
+      border-radius: 8px;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      transition: background-color 0.3s;
     }
-    .server-box h3 {
-      margin-top: 0;
+
+    .bot-card:hover {
+      background-color: #138496;
     }
-    .server-box p {
-      font-size: 14px;
-      margin-bottom: 5px;
-    }
-    .server-status {
-      font-size: 16px;
-    }
-    .server-status.online {
-      color: #00ff00;
-    }
-    .server-status.offline {
-      color: #ff0000;
+
+    .panel-content {
+      color: #343a40;
     }
   </style>
 </head>
 <body>
-  <div class="wrapper">
-    <!-- Sidebar and Page Content -->
-    <!-- Sidebar content goes here -->
-    <!-- Page Content -->
-    <div id="content">
-      <div class="container-fluid">
-        <h2>Servers</h2>
-        <div class="row" id="serversList">
-          <!-- Server boxes will be dynamically added here -->
-        </div>
-        <!-- Create Server Button -->
-        <button type="button" class="btn btn-primary" id="createServerButton">Create Server</button>
-        <!-- Create Server Form (Pop-up) -->
-        <div id="createServerForm" style="display:none;">
-          <h3>Create Server</h3>
-          <form id="serverForm">
-            <div class="form-group">
-              <label for="serverName">Server Name:</label>
-              <input type="text" class="form-control" id="serverName" required>
-            </div>
-            <div class="form-group">
-              <label for="serverLanguage">Language:</label>
-              <select class="form-control" id="serverLanguage" required>
-                <option value="python">Python</option>
-                <option value="javascript">JavaScript</option>
-              </select>
-            </div>
-            <button type="submit" class="btn btn-success">Submit</button>
-          </form>
-        </div>
+
+<!-- Navbar -->
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+  <div class="container">
+    <a class="navbar-brand" href="#">Bot Panel</a>
+    <!-- Add any additional navbar content here -->
+  </div>
+</nav>
+
+<!-- Sidenav -->
+<nav class="sidenav">
+  <a href="#">Link 1</a>
+  <a href="#">Link 2</a>
+  <a href="#">Link 3</a>
+  <!-- Add more links as needed -->
+</nav>
+
+<!-- Page Content -->
+<main class="page-content">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-8">
+        <h1 class="page-title">Welcome to Bot Panel</h1>
+        <div class="bot-card" onclick="togglePanel()">Click here to reveal the panel</div>
       </div>
     </div>
   </div>
-  <!-- JavaScript -->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.0/js/bootstrap.bundle.min.js"></script>
-  <script>
-    $(document).ready(function(){
-      // Function to display servers
-      function displayServers(servers) {
-        var serversHTML = '';
-        servers.forEach(function(server) {
-          serversHTML += `
-            <div class="col-md-4">
-              <div class="server-box">
-                <h3>${server.name}</h3>
-                <p>IP Address: ${server.ip}</p>
-                <p>Location: ${server.location}</p>
-                <p class="server-status ${server.status}">${server.status}</p>
-              </div>
-            </div>
-          `;
-        });
-        $('#serversList').html(serversHTML);
-      }
+</main>
 
-      // Initial server data (empty)
-      var servers = [];
+<!-- Bot Panel -->
+<div class="panel" id="panel">
+  <div class="container">
+    <h2 class="panel-content">Panel Content</h2>
+    <p class="panel-content">This is where you can display additional information, settings, or features related to your bot.</p>
+  </div>
+</div>
 
-      // Display initial servers
-      displayServers(servers);
+<script>
+  function togglePanel() {
+    var panel = document.getElementById("panel");
+    panel.classList.toggle("show");
+  }
+</script>
 
-      // Create Server Button Click Event
-      $('#createServerButton').click(function(){
-        $('#createServerForm').toggle();
-      });
-
-      // Server Form Submission
-      $('#serverForm').submit(function(event){
-        event.preventDefault();
-        var serverName = $('#serverName').val();
-        var serverLanguage = $('#serverLanguage').val();
-        
-        // Here you would typically send a request to the backend to create the server
-        // For demonstration purposes, we'll simulate server creation here
-        var newServer = {
-          name: serverName,
-          ip: "127.0.0.1", // Dummy IP, replace with actual server IP
-          location: "Unknown", // Dummy location, replace with actual server location
-          status: "online" // New server is assumed online initially
-        };
-
-        // Add the new server to the list
-        servers.push(newServer);
-
-        // Display updated servers
-        displayServers(servers);
-
-        // Close the form
-        $('#createServerForm').hide();
-      });
-    });
-  </script>
 </body>
 </html>
