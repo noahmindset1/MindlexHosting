@@ -1,11 +1,10 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Bot Hosting Panel</title>
-
+  
   <!-- CSS -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.3.0/css/bootstrap.min.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
@@ -15,6 +14,7 @@
       --border-radii: 10px;
       --server-list-radii: 8px;
       --server-list-padding: 1.25rem;
+      --transition-duration: 0.3s;
     }
 
     /* Turn off image dragging */
@@ -39,6 +39,11 @@
       width: 250px;
       background-color: #333333;
       padding-top: 20px;
+      transition: width var(--transition-duration);
+    }
+
+    .sidebar.collapsed {
+      width: 80px;
     }
 
     .sidebar-header {
@@ -60,6 +65,7 @@
       text-decoration: none;
       display: block;
       padding: 10px;
+      transition: padding var(--transition-duration);
     }
 
     .sidebar-item a:hover {
@@ -69,17 +75,27 @@
     .content {
       flex: 1;
       padding: 20px;
+      transition: padding var(--transition-duration);
     }
 
     .main-header {
       margin-bottom: 20px;
       background: #0e0e17;
       border-radius: var(--border-radii);
+      transition: margin var(--transition-duration);
     }
 
     .main-header .navbar-brand {
       color: #ffffff;
       font-weight: bold;
+    }
+
+    .main-header .navbar-toggler-icon {
+      color: #ffffff;
+    }
+
+    .main-header .navbar-collapse {
+      transition: background var(--transition-duration);
     }
 
     .main-header .navbar-nav .nav-item .nav-link {
@@ -100,10 +116,10 @@
       background-color: #1f2129;
       padding: 20px;
       border-radius: var(--border-radii);
+      transition: background-color var(--transition-duration);
     }
   </style>
 </head>
-
 <body>
 
   <div class="wrapper">
@@ -157,7 +173,7 @@
       <!-- Footer -->
       <footer class="main-footer">
         <div class="container-fluid">
-          <p>&copy; 2022 BotHosting. All rights reserved.</p>
+          <p>&copy; 2024 BotHosting. All rights reserved.</p>
         </div>
       </footer>
 
@@ -169,6 +185,17 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
 
-</body>
+  <script>
+    $(document).ready(function(){
+      // Toggle sidebar and content width on navbar toggler click
+      $('.navbar-toggler').click(function(){
+        $('.sidebar').toggleClass('collapsed');
+        $('.content').toggleClass('collapsed');
+        $('.main-header').toggleClass('collapsed');
+        $('.page-content').toggleClass('collapsed');
+      });
+    });
+  </script>
 
+</body>
 </html>
