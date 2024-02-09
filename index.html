@@ -12,33 +12,50 @@
   <style>
     body {
       height: 100vh;
-      background: url('bg.jpg');
+      background: #222;
       background-size: cover;
+      display: flex;
+      justify-content: center;
+      align-items: center;
     }
 
     .login-box {
       width: 400px;
       padding: 20px;
-      margin: 100px auto;
-      background: #fff;
-      -webkit-box-shadow: 0px 2px 20px rgba(0,0,0,0.1);
-      box-shadow: 0px 2px 20px rgba(0,0,0,0.1);
-      border-radius: 4px;
+      background: #333;
+      border-radius: 8px;
+      box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.3);
+      animation: fadeIn 0.5s ease forwards;
     }
-    
+
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+        transform: translateY(-50px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
     .login-title {
-      margin: 0 0 20px 0;
+      margin-bottom: 20px;
       text-align: center;
+      color: #fff;
     }
 
     .login-input {
       padding: 12px 20px;
-      margin: 8px 0;
+      margin-bottom: 20px;
       width: 100%;
-      border: 1px solid #ccc;
+      border: none;
       border-radius: 4px;
+      background: #444;
+      color: #fff;
     }
-    
+
     .login-button {
       width: 100%;
       background: #007bff;
@@ -48,6 +65,7 @@
       border: none;
       border-radius: 4px;
       cursor: pointer;
+      transition: background 0.3s ease;
     }
 
     .login-button:hover {
@@ -66,26 +84,27 @@
       <input type="text" class="login-input" id="username" placeholder="Username">
 
       <input type="password" class="login-input" id="password" placeholder="Password">
-      
+
       <button type="submit" class="login-button">Login</button>
     </form>
   </div>
 
-<script>
+  <script>
     // JavaScript for redirection after successful login
     document.getElementById("login-form").addEventListener("submit", function(event) {
-        event.preventDefault(); // Prevent the default form submission
+      event.preventDefault(); // Prevent the default form submission
 
-        // Get the username and password from the form
-        var username = document.getElementById("username").value;
-        var password = document.getElementById("password").value;
+      // Get the username and password from the form
+      var username = document.getElementById("username").value;
+      var password = document.getElementById("password").value;
 
-        // Perform your login validation here (e.g., sending a request to the server)
+      // Perform your login validation here (e.g., sending a request to the server)
 
-        // For demonstration purposes, assume login is successful and redirect to panel.html
-        window.location.href = "panel.html";
+      // For demonstration purposes, assume login is successful and redirect to panel.html
+      window.location.href = "panel.html";
     });
-</script>
+  </script>
 
 </body>
+
 </html>
