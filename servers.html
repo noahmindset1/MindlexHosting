@@ -1,155 +1,134 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Servers - Bot Hosting Panel</title>
-  
   <!-- CSS -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.0/css/bootstrap.min.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css">
-  <link rel="stylesheet" href="panel.css">
-
+  <link rel="stylesheet" href="panel.css"> <!-- Include your panel styles -->
   <style>
-    /* Styles specific to this page */
+    /* Additional styles for server list */
     .server-box {
-      background: #333;
+      background: var(--background-color);
       color: #fff;
-      padding: 20px;
+      padding: var(--server-list-padding);
       margin-bottom: 20px;
-      border-radius: 5px;
+      border-radius: var(--server-list-radii);
+      cursor: pointer;
     }
-    
     .server-box h3 {
       margin-top: 0;
     }
-    
     .server-box p {
       font-size: 14px;
       margin-bottom: 5px;
     }
-    
     .server-status {
       font-size: 16px;
     }
-    
     .server-status.online {
       color: #00ff00;
     }
-    
     .server-status.offline {
       color: #ff0000;
     }
   </style>
-  
 </head>
 <body>
-
   <div class="wrapper">
-  
-    <!-- Sidebar -->
-    <nav id="sidebar" class="active">
-      <div class="sidebar-header">
-        <h3>Bot Hosting Panel</h3>
-      </div>
-
-      <ul class="list-unstyled components">
-        <li>
-          <a href="index.html"><i class="fas fa-home"></i> Dashboard</a>
-        </li>
-        <li>
-          <a href="servers.html"><i class="fas fa-server"></i> Servers</a>
-        </li>
-        <li>
-           <a href="files.html"><i class="fas fa-folder"></i> Files</a>
-        </li>
-        <li>
-          <a href="settings.html"><i class="fas fa-cog"></i> Settings</a>
-        </li>
-      </ul>
-    </nav>
-
+    <!-- Sidebar and Page Content -->
+    <!-- Sidebar content goes here -->
     <!-- Page Content -->
     <div id="content">
-
-      <nav class="navbar navbar-expand-lg navbar-light">
-        <div class="container-fluid">
-
-          <button type="button" id="sidebarCollapse" class="btn btn-info">
-            <i class="fas fa-align-left"></i>
-          </button>
-
-          <button class="btn btn-dark d-inline-block d-lg-none ml-auto" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-            <i class="fas fa-align-justify"></i>
-          </button>
-
-          <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul class="nav navbar-nav ml-auto">
-              <li class="nav-item active">
-                <a class="nav-link" href="#">Page</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="#">Page</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="#">Page</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="#">Page</a>
-              </li>
-            </ul>
-          </div>
+      <div class="container-fluid">
+        <h2>Servers</h2>
+        <div class="row" id="serversList">
+          <!-- Server boxes will be dynamically added here -->
         </div>
-      </nav>
-
-      <!-- Page Content -->
-      <div class="page-content">
-        <div class="container-fluid">
-
-          <h2>Servers</h2>
-          
-          <div class="row">
-            
-            <!-- Server 1 -->
-            <div class="col-md-4">
-              <div class="server-box">
-                <h3>Server 1</h3>
-                <p>IP Address: 192.168.1.1</p> 
-                <p>Location: New York</p>
-                <p class="server-status online">Online</p>
-              </div>
+        <!-- Create Server Button -->
+        <button type="button" class="btn btn-primary" id="createServerButton">Create Server</button>
+        <!-- Create Server Form (Pop-up) -->
+        <div id="createServerForm" style="display:none;">
+          <h3>Create Server</h3>
+          <form id="serverForm">
+            <div class="form-group">
+              <label for="serverName">Server Name:</label>
+              <input type="text" class="form-control" id="serverName" required>
             </div>
-            
-            <!-- Server 2 -->
-            <div class="col-md-4">
-              <div class="server-box">
-                <h3>Server 2</h3>
-                <p>IP Address: 192.168.1.2</p>
-                <p>Location: London</p>
-                <p class="server-status offline">Offline</p> 
-              </div>
+            <div class="form-group">
+              <label for="serverLanguage">Language:</label>
+              <select class="form-control" id="serverLanguage" required>
+                <option value="python">Python</option>
+                <option value="javascript">JavaScript</option>
+              </select>
             </div>
-            
-            <!-- Server 3 -->
-            <div class="col-md-4">
-              <div class="server-box">
-                <h3>Server 3</h3>
-                <p>IP Address: 192.168.1.3</p>
-                <p>Location: Singapore</p>   
-                <p class="server-status online">Online</p>
-              </div>
-            </div>
-
-          </div>
-          
+            <button type="submit" class="btn btn-success">Submit</button>
+          </form>
         </div>
       </div>
-
     </div>
-
   </div>
-
   <!-- JavaScript -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.0/js/bootstrap.bundle.min.js"></script>
+  <script>
+    $(document).ready(function(){
+      // Function to display servers
+      function displayServers(servers) {
+        var serversHTML = '';
+        servers.forEach(function(server) {
+          serversHTML += `
+            <div class="col-md-4">
+              <div class="server-box">
+                <h3>${server.name}</h3>
+                <p>IP Address: ${server.ip}</p>
+                <p>Location: ${server.location}</p>
+                <p class="server-status ${server.status}">${server.status}</p>
+              </div>
+            </div>
+          `;
+        });
+        $('#serversList').html(serversHTML);
+      }
 
+      // Initial server data (empty)
+      var servers = [];
+
+      // Display initial servers
+      displayServers(servers);
+
+      // Create Server Button Click Event
+      $('#createServerButton').click(function(){
+        $('#createServerForm').toggle();
+      });
+
+      // Server Form Submission
+      $('#serverForm').submit(function(event){
+        event.preventDefault();
+        var serverName = $('#serverName').val();
+        var serverLanguage = $('#serverLanguage').val();
+        
+        // Here you would typically send a request to the backend to create the server
+        // For demonstration purposes, we'll simulate server creation here
+        var newServer = {
+          name: serverName,
+          ip: "127.0.0.1", // Dummy IP, replace with actual server IP
+          location: "Unknown", // Dummy location, replace with actual server location
+          status: "online" // New server is assumed online initially
+        };
+
+        // Add the new server to the list
+        servers.push(newServer);
+
+        // Display updated servers
+        displayServers(servers);
+
+        // Close the form
+        $('#createServerForm').hide();
+      });
+    });
+  </script>
 </body>
 </html>
