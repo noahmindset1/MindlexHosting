@@ -10,19 +10,29 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.3.0/css/bootstrap.min.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
   <style>
+    :root {
+      --background-color: #11111c;
+      --border-radii: 10px;
+      --server-list-radii: 8px;
+      --server-list-padding: 1.25rem;
+    }
+
+    /* Turn off image dragging */
+    img {
+      -webkit-user-drag: none;
+    }
+
     body {
       margin: 0;
       padding: 0;
       font-family: Arial, sans-serif;
-      background-image: url('background.webp');
-      background-size: cover;
-      background-position: center;
+      background-color: var(--background-color);
       color: #ffffff;
     }
 
     .wrapper {
       display: flex;
-      height: 100vh;
+      min-height: 100vh;
     }
 
     .sidebar {
@@ -63,6 +73,8 @@
 
     .main-header {
       margin-bottom: 20px;
+      background: #0e0e17;
+      border-radius: var(--border-radii);
     }
 
     .main-header .navbar-brand {
@@ -83,8 +95,13 @@
       text-align: center;
       color: #ffffff;
     }
-  </style>
 
+    .page-content {
+      background-color: #1f2129;
+      padding: 20px;
+      border-radius: var(--border-radii);
+    }
+  </style>
 </head>
 
 <body>
@@ -132,11 +149,9 @@
 
       <!-- Page Content -->
       <div class="page-content">
-        <div class="container-fluid">
-          <!-- Dashboard Content -->
-          <h1>Welcome to Bot Hosting Panel</h1>
-          <p>This is the dashboard page.</p>
-        </div>
+        <!-- Dashboard Content -->
+        <h1>Welcome to Bot Hosting Panel</h1>
+        <p>This is the dashboard page.</p>
       </div>
 
       <!-- Footer -->
