@@ -3,100 +3,128 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Bot Hosting System</title>
-    <!-- Link to the provided CSS files -->
-    <link rel="stylesheet" href="https://raw.githubusercontent.com/pterodactylmanager/PteroPanelFork/develop/public/themes/pterodactyl/css/pterodactyl.css">
-    <link rel="stylesheet" href="https://raw.githubusercontent.com/pterodactylmanager/PteroPanelFork/develop/public/themes/pterodactyl/css/terminal.css">
-    <link rel="stylesheet" href="https://raw.githubusercontent.com/pterodactylmanager/PteroPanelFork/develop/public/themes/pterodactyl/css/checkbox.css">
+    <title>Login Page</title>
     <style>
-        /* Additional styles specific to this HTML */
-        /* Excluding the login styles */
-        .terminal-btn {
-            background-color: #0967d3;
+        /* CSS Styles for Login Page */
+
+        /* Reset CSS */
+        body, h1, h2, h3, h4, h5, h6, p, blockquote, pre, dl, dd, ol, ul, figure {
+            margin: 0;
+            padding: 0;
+        }
+
+        /* Global Styles */
+        body {
+            font-family: Arial, sans-serif;
+            font-size: 16px;
+            line-height: 1.6;
+            color: #cad1d8;
+            background-color: #10529f; /* Login page background color */
+        }
+
+        a {
+            color: #007eff;
+            text-decoration: none;
+        }
+
+        a:hover {
+            color: #206ec7;
+        }
+
+        /* Login Page Styles */
+        .login-page {
+            background: #10529f;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .login-logo {
             color: #fff;
-            border: none;
-            padding: 10px 20px;
-            margin-top: 10px;
+            font-weight: 400;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        .pterodactyl-login-box {
+            background: rgba(0, 0, 0, 0.25);
+            border-radius: 3px;
+            padding: 20px;
+            width: 300px;
+        }
+
+        .pterodactyl-login-input > input {
+            background: rgba(0, 0, 0, 0.4);
+            border: 1px solid #000;
+            border-radius: 2px;
+            color: #fff;
+            padding: 10px;
+            width: 100%;
+            margin-bottom: 10px;
+        }
+
+        .pterodactyl-login-button--main {
+            background: rgba(0, 0, 0, 0.4);
+            border: 1px solid #000;
+            border-radius: 2px;
+            color: #fff;
+            padding: 10px;
+            width: 100%;
             cursor: pointer;
+            transition: background 0.3s ease;
+        }
+
+        .pterodactyl-login-button--main:hover {
+            background: rgba(0, 0, 0, 0.7);
+        }
+
+        .login-copyright {
+            color: rgba(255, 255, 255, 0.3);
+            text-align: center;
         }
     </style>
 </head>
 <body>
-    <div class="container">
-        <div class="file-manager">
-            <h2>File Manager</h2>
-            <div class="file-list" id="file-list">
-                <!-- File list will be displayed here -->
+
+<!-- Login Page HTML Content -->
+<div class="login-page">
+    <div class="pterodactyl-login-box">
+        <div class="login-logo">
+            <!-- Your logo content here -->
+            <h2>Your Logo</h2>
+        </div>
+        <form>
+            <div class="pterodactyl-login-input">
+                <input type="text" placeholder="Username">
             </div>
-            <input type="file" id="file-input" multiple>
-            <button id="upload-btn">Upload</button>
+            <div class="pterodactyl-login-input">
+                <input type="password" placeholder="Password">
+            </div>
+            <button type="submit" class="pterodactyl-login-button--main">Login</button>
+        </form>
+        <div class="login-copyright">
+            <!-- Your copyright content here -->
+            <p>&copy; 2024 Your Company. All rights reserved.</p>
         </div>
-
-        <div class="terminal" id="terminal">
-            <!-- Terminal output will be displayed here -->
-        </div>
-        <button class="terminal-btn" id="start-python-btn">Start Python</button>
     </div>
+</div>
 
-    <script>
-        document.addEventListener("DOMContentLoaded", function() {
-            // Function to handle file upload
-            function handleFileUpload(event) {
-                const fileList = event.target.files;
-                const fileContainer = document.getElementById('file-list');
+<script>
+    // JavaScript for redirection after successful login
+    document.getElementById("login-form").addEventListener("submit", function(event) {
+        event.preventDefault(); // Prevent the default form submission
 
-                fileContainer.innerHTML = '';
+        // Get the username and password from the form
+        var username = document.getElementById("username").value;
+        var password = document.getElementById("password").value;
 
-                // Loop through the selected files and display them
-                for (const file of fileList) {
-                    const fileItem = document.createElement('div');
-                    fileItem.textContent = file.name;
-                    fileContainer.appendChild(fileItem);
-                }
-            }
+        // Perform your login validation here (e.g., sending a request to the server)
 
-            // Add event listener for file input change
-            const fileInput = document.getElementById('file-input');
-            fileInput.addEventListener('change', handleFileUpload);
+        // For demonstration purposes, assume login is successful and redirect to panel.html
+        window.location.href = "panel.html";
+    });
+</script>
 
-            // Function to fetch files from the server
-            function fetchFiles() {
-                fetch('/get-files')
-                    .then(response => response.json())
-                    .then(data => {
-                        const fileContainer = document.getElementById('file-list');
-                        fileContainer.innerHTML = '';
-                        data.forEach(fileName => {
-                            const fileItem = document.createElement('div');
-                            const fileLink = document.createElement('a');
-                            fileLink.href = `/uploads/${fileName}`;
-                            fileLink.textContent = fileName;
-                            fileItem.appendChild(fileLink);
-                            fileContainer.appendChild(fileItem);
-                        });
-                    })
-                    .catch(error => console.error('Error fetching files:', error));
-            }
-
-            // Fetch files when the page loads
-            fetchFiles();
-
-            // Function to start Python code execution
-            function startPython() {
-                const terminal = document.getElementById('terminal');
-                terminal.textContent = 'Running main.py...\n';
-                fetch('/run-python', { method: 'POST' })
-                    .then(response => response.text())
-                    .then(result => {
-                        terminal.textContent += result;
-                    })
-                    .catch(error => console.error('Error running Python:', error));
-            }
-
-            // Add event listener for start Python button
-            const startPythonBtn = document.getElementById('start-python-btn');
-            startPythonBtn.addEventListener('click', startPython);
-        });
-    </script>
 </body>
 </html>
