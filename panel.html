@@ -9,8 +9,81 @@
   <!-- CSS -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.3.0/css/bootstrap.min.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
-  <link rel="stylesheet" href="panel.css">
-  <link rel="stylesheet" href="terminal.css">
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: Arial, sans-serif;
+      background-image: url('background.webp');
+      background-size: cover;
+      background-position: center;
+      color: #ffffff;
+    }
+
+    .wrapper {
+      display: flex;
+      height: 100vh;
+    }
+
+    .sidebar {
+      width: 250px;
+      background-color: #333333;
+      padding-top: 20px;
+    }
+
+    .sidebar-header {
+      text-align: center;
+      padding-bottom: 20px;
+    }
+
+    .sidebar-menu {
+      list-style: none;
+      padding-left: 0;
+    }
+
+    .sidebar-item {
+      margin-bottom: 10px;
+    }
+
+    .sidebar-item a {
+      color: #ffffff;
+      text-decoration: none;
+      display: block;
+      padding: 10px;
+    }
+
+    .sidebar-item a:hover {
+      background-color: #444444;
+    }
+
+    .content {
+      flex: 1;
+      padding: 20px;
+    }
+
+    .main-header {
+      margin-bottom: 20px;
+    }
+
+    .main-header .navbar-brand {
+      color: #ffffff;
+      font-weight: bold;
+    }
+
+    .main-header .navbar-nav .nav-item .nav-link {
+      color: #ffffff;
+    }
+
+    .main-header .navbar-nav .nav-item .nav-link:hover {
+      color: #cccccc;
+    }
+
+    .main-footer {
+      margin-top: 20px;
+      text-align: center;
+      color: #ffffff;
+    }
+  </style>
 
 </head>
 
@@ -34,38 +107,35 @@
     <!-- Page Content -->
     <div class="content">
 
-      <!-- Header -->  
+      <!-- Header -->
       <header class="main-header">
-        <div class="container-fluid">
-          <nav class="navbar navbar-expand-lg">
-            <div class="container-fluid">
-              <a class="navbar-brand" href="#">BHP</a>
-              <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-              </button>
-              <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav ms-auto">
-                  <li class="nav-item">
-                    <a class="nav-link" href="#"><i class="fas fa-user"></i> Mindset</a>
-                  </li>
-                  <li class="nav-item">
-                    <a class="nav-link" href="#"><i class="fas fa-sign-out-alt"></i> Sign out</a>
-                  </li>
-                </ul>
-              </div>
+        <nav class="navbar navbar-expand-lg">
+          <div class="container-fluid">
+            <a class="navbar-brand" href="#">BHP</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+              aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+              <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+              <ul class="navbar-nav ms-auto">
+                <li class="nav-item">
+                  <a class="nav-link" href="#"><i class="fas fa-user"></i> Mindset</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="#"><i class="fas fa-sign-out-alt"></i> Sign out</a>
+                </li>
+              </ul>
             </div>
-          </nav>
-        </div>
+          </div>
+        </nav>
       </header>
 
       <!-- Page Content -->
       <div class="page-content">
         <div class="container-fluid">
-
           <!-- Dashboard Content -->
           <h1>Welcome to Bot Hosting Panel</h1>
           <p>This is the dashboard page.</p>
-
         </div>
       </div>
 
