@@ -1,114 +1,75 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login Page</title>
-    <style>
-        /* CSS Styles for Login Page */
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Login Page</title>
 
-        /* Reset CSS */
-        body, h1, h2, h3, h4, h5, h6, p, blockquote, pre, dl, dd, ol, ul, figure {
-            margin: 0;
-            padding: 0;
-        }
+  <!-- Use a CSS framework like Bootstrap for better styling -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
 
-        /* Global Styles */
-        body {
-            font-family: Arial, sans-serif;
-            font-size: 16px;
-            line-height: 1.6;
-            color: #cad1d8;
-            background-color: #10529f; /* Login page background color */
-        }
+  <style>
+    body {
+      height: 100vh;
+      background: url('bg.jpg');
+      background-size: cover;
+    }
 
-        a {
-            color: #007eff;
-            text-decoration: none;
-        }
+    .login-box {
+      width: 400px;
+      padding: 20px;
+      margin: 100px auto;
+      background: #fff;
+      -webkit-box-shadow: 0px 2px 20px rgba(0,0,0,0.1);
+      box-shadow: 0px 2px 20px rgba(0,0,0,0.1);
+      border-radius: 4px;
+    }
+    
+    .login-title {
+      margin: 0 0 20px 0;
+      text-align: center;
+    }
 
-        a:hover {
-            color: #206ec7;
-        }
+    .login-input {
+      padding: 12px 20px;
+      margin: 8px 0;
+      width: 100%;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+    }
+    
+    .login-button {
+      width: 100%;
+      background: #007bff;
+      color: #fff;
+      padding: 14px 20px;
+      margin: 8px 0;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+    }
 
-        /* Login Page Styles */
-        .login-page {
-            background: #10529f;
-            height: 100vh;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-        }
+    .login-button:hover {
+      background: #0062cc;
+    }
+  </style>
 
-        .login-logo {
-            color: #fff;
-            font-weight: 400;
-            margin-bottom: 20px;
-            text-align: center;
-        }
-
-        .pterodactyl-login-box {
-            background: rgba(0, 0, 0, 0.25);
-            border-radius: 3px;
-            padding: 20px;
-            width: 300px;
-        }
-
-        .pterodactyl-login-input > input {
-            background: rgba(0, 0, 0, 0.4);
-            border: 1px solid #000;
-            border-radius: 2px;
-            color: #fff;
-            padding: 10px;
-            width: 100%;
-            margin-bottom: 10px;
-        }
-
-        .pterodactyl-login-button--main {
-            background: rgba(0, 0, 0, 0.4);
-            border: 1px solid #000;
-            border-radius: 2px;
-            color: #fff;
-            padding: 10px;
-            width: 100%;
-            cursor: pointer;
-            transition: background 0.3s ease;
-        }
-
-        .pterodactyl-login-button--main:hover {
-            background: rgba(0, 0, 0, 0.7);
-        }
-
-        .login-copyright {
-            color: rgba(255, 255, 255, 0.3);
-            text-align: center;
-        }
-    </style>
 </head>
+
 <body>
 
-<!-- Login Page HTML Content -->
-<div class="login-page">
-    <div class="pterodactyl-login-box">
-        <div class="login-logo">
-            <!-- Your logo content here -->
-            <h2>Your Logo</h2>
-        </div>
-        <form>
-            <div class="pterodactyl-login-input">
-                <input type="text" placeholder="Username">
-            </div>
-            <div class="pterodactyl-login-input">
-                <input type="password" placeholder="Password">
-            </div>
-            <button type="submit" class="pterodactyl-login-button--main">Login</button>
-        </form>
-        <div class="login-copyright">
-            <!-- Your copyright content here -->
-            <p>&copy; 2024 Your Company. All rights reserved.</p>
-        </div>
-    </div>
-</div>
+  <div class="login-box">
+    <h2 class="login-title">Login</h2>
+
+    <form id="login-form">
+      <input type="text" class="login-input" id="username" placeholder="Username">
+
+      <input type="password" class="login-input" id="password" placeholder="Password">
+      
+      <button type="submit" class="login-button">Login</button>
+    </form>
+  </div>
 
 <script>
     // JavaScript for redirection after successful login
