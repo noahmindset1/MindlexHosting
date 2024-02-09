@@ -1,77 +1,89 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Bot Hosting Panel</title>
-  
+
   <!-- CSS -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.3.0/css/bootstrap.min.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
-  <link rel="stylesheet" href="panel.css"> <!-- Link to your styles.css file -->
+  <link rel="stylesheet" href="panel.css">
+  <link rel="stylesheet" href="terminal.css">
+
 </head>
 
 <body>
 
-<div class="wrapper">
+  <div class="wrapper">
 
-  <!-- Sidebar -->
-  <aside class="sidebar">
-    <div class="sidebar-header">
-      <h3>Bot Hosting Panel</h3>
-    </div>
-    <ul class="sidebar-menu">
-      <li class="sidebar-item active"><a href="#"><i class="fas fa-tachometer-alt"></i> <span>Dashboard</span></a></li>
-      <li class="sidebar-item"><a href="#"><i class="fas fa-server"></i> <span>Servers</span></a></li>
-      <li class="sidebar-item"><a href="#"><i class="fas fa-file"></i> <span>File Manager</span></a></li>
-      <li class="sidebar-item"><a href="#"><i class="fas fa-cog"></i> <span>Settings</span></a></li>
-    </ul>
-  </aside>
-
-  <!-- Page Content -->
-  <div class="content">
-    <!-- Header -->
-    <header class="main-header">
-      <div class="container-fluid">
-        <nav class="navbar navbar-expand-lg">
-          <div class="container-fluid">
-            <a class="navbar-brand" href="#">BHP</a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-              <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarNav">
-              <ul class="navbar-nav ms-auto">
-                <li class="nav-item">
-                  <a class="nav-link" href="#"><i class="fas fa-user"></i> Mindset</a>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link" href="#"><i class="fas fa-sign-out-alt"></i> Sign out</a>
-                </li>
-              </ul>
-            </div>
-          </div>
-        </nav>
+    <!-- Sidebar -->
+    <aside class="sidebar">
+      <div class="sidebar-header">
+        <h3>Bot Hosting Panel</h3>
       </div>
-    </header>
+
+      <ul class="sidebar-menu">
+        <li class="sidebar-item"><a href="/servers.html"><i class="fas fa-server"></i> <span>Servers</span></a></li>
+        <li class="sidebar-item"><a href="/files.html"><i class="fas fa-file"></i> <span>File Manager</span></a></li>
+        <li class="sidebar-item"><a href="/settings.html"><i class="fas fa-cog"></i> <span>Settings</span></a></li>
+      </ul>
+    </aside>
+
     <!-- Page Content -->
-    <div class="page-content">
-      <div class="container-fluid">
-        <!-- Your content goes here -->
-        <h1>Welcome to Bot Hosting Panel</h1>
-        <p>This is the panel for managing your bot hosting services.</p>
-      </div>
-    </div>
-    <!-- Footer -->
-    <footer class="main-footer">
-      <div class="container-fluid">
-        <p>&copy; 2022 BotHosting. All rights reserved.</p>
-      </div>
-    </footer>
-  </div>
-</div>
+    <div class="content">
 
-<!-- JavaScript -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
+      <!-- Header -->  
+      <header class="main-header">
+        <div class="container-fluid">
+          <nav class="navbar navbar-expand-lg">
+            <div class="container-fluid">
+              <a class="navbar-brand" href="#">BHP</a>
+              <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+              </button>
+              <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                  <li class="nav-item">
+                    <a class="nav-link" href="#"><i class="fas fa-user"></i> Mindset</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="#"><i class="fas fa-sign-out-alt"></i> Sign out</a>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </nav>
+        </div>
+      </header>
+
+      <!-- Page Content -->
+      <div class="page-content">
+        <div class="container-fluid">
+
+          <!-- Dashboard Content -->
+          <h1>Welcome to Bot Hosting Panel</h1>
+          <p>This is the dashboard page.</p>
+
+        </div>
+      </div>
+
+      <!-- Footer -->
+      <footer class="main-footer">
+        <div class="container-fluid">
+          <p>&copy; 2022 BotHosting. All rights reserved.</p>
+        </div>
+      </footer>
+
+    </div>
+
+  </div>
+
+  <!-- JavaScript -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
+
 </body>
+
 </html>
