@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Servers - Bot Hosting Panel</title>
+  
+  <!-- CSS -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.0/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css">
+  <link rel="stylesheet" href="panel.css">
+
+  <style>
+    /* Styles specific to this page */
+    .server-box {
+      background: #333;
+      color: #fff;
+      padding: 20px;
+      margin-bottom: 20px;
+      border-radius: 5px;
+    }
+    
+    .server-box h3 {
+      margin-top: 0;
+    }
+    
+    .server-box p {
+      font-size: 14px;
+      margin-bottom: 5px;
+    }
+    
+    .server-status {
+      font-size: 16px;
+    }
+    
+    .server-status.online {
+      color: #00ff00;
+    }
+    
+    .server-status.offline {
+      color: #ff0000;
+    }
+  </style>
+  
+</head>
+<body>
+
+  <div class="wrapper">
+  
+    <!-- Sidebar -->
+    <nav id="sidebar" class="active">
+      <div class="sidebar-header">
+        <h3>Bot Hosting Panel</h3>
+      </div>
+
+      <ul class="list-unstyled components">
+        <li>
+          <a href="index.html"><i class="fas fa-home"></i> Dashboard</a>
+        </li>
+        <li>
+          <a href="servers.html"><i class="fas fa-server"></i> Servers</a>
+        </li>
+        <li>
+           <a href="files.html"><i class="fas fa-folder"></i> Files</a>
+        </li>
+        <li>
+          <a href="settings.html"><i class="fas fa-cog"></i> Settings</a>
+        </li>
+      </ul>
+    </nav>
+
+    <!-- Page Content -->
+    <div id="content">
+
+      <nav class="navbar navbar-expand-lg navbar-light">
+        <div class="container-fluid">
+
+          <button type="button" id="sidebarCollapse" class="btn btn-info">
+            <i class="fas fa-align-left"></i>
+          </button>
+
+          <button class="btn btn-dark d-inline-block d-lg-none ml-auto" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <i class="fas fa-align-justify"></i>
+          </button>
+
+          <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="nav navbar-nav ml-auto">
+              <li class="nav-item active">
+                <a class="nav-link" href="#">Page</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#">Page</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#">Page</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#">Page</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </nav>
+
+      <!-- Page Content -->
+      <div class="page-content">
+        <div class="container-fluid">
+
+          <h2>Servers</h2>
+          
+          <div class="row">
+            
+            <!-- Server 1 -->
+            <div class="col-md-4">
+              <div class="server-box">
+                <h3>Server 1</h3>
+                <p>IP Address: 192.168.1.1</p> 
+                <p>Location: New York</p>
+                <p class="server-status online">Online</p>
+              </div>
+            </div>
+            
+            <!-- Server 2 -->
+            <div class="col-md-4">
+              <div class="server-box">
+                <h3>Server 2</h3>
+                <p>IP Address: 192.168.1.2</p>
+                <p>Location: London</p>
+                <p class="server-status offline">Offline</p> 
+              </div>
+            </div>
+            
+            <!-- Server 3 -->
+            <div class="col-md-4">
+              <div class="server-box">
+                <h3>Server 3</h3>
+                <p>IP Address: 192.168.1.3</p>
+                <p>Location: Singapore</p>   
+                <p class="server-status online">Online</p>
+              </div>
+            </div>
+
+          </div>
+          
+        </div>
+      </div>
+
+    </div>
+
+  </div>
+
+  <!-- JavaScript -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.0/js/bootstrap.bundle.min.js"></script>
+
+</body>
+</html>
