@@ -1,124 +1,159 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Bot Panel</title>
-  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <title>Bot Hosting Panel</title>
+
+  <!-- CSS -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.3.0/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
   <style>
-    /* Navbar */
-    .navbar {
-      box-shadow: 0 2px 4px rgba(0,0,0,.08);
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: Arial, sans-serif;
+      background-image: url('background.webp');
+      background-size: cover;
+      background-position: center;
+      color: #ffffff;
     }
 
-    .navbar-brand img {
-      max-height: 30px;
+    .wrapper {
+      display: flex;
+      height: 100vh;
     }
 
-    /* Sidenav */
-    .sidenav {
-      height: 100%;
-      width: 200px;
-      position: fixed;
-      top: 56px;
-      left: 0;
-      background-color: #252525;
+    .sidebar {
+      width: 250px;
+      background-color: #333333;
       padding-top: 20px;
     }
 
-    .sidenav a {
-      padding: 10px;
+    .sidebar-header {
+      text-align: center;
+      padding-bottom: 20px;
+    }
+
+    .sidebar-menu {
+      list-style: none;
+      padding-left: 0;
+    }
+
+    .sidebar-item {
+      margin-bottom: 10px;
+    }
+
+    .sidebar-item a {
+      color: #ffffff;
       text-decoration: none;
-      color: #a2a2a2;
       display: block;
+      padding: 10px;
     }
 
-    /* Page Content */
-    .page-content {
-      margin-left: 200px;
+    .sidebar-item a:hover {
+      background-color: #444444;
+    }
+
+    .content {
+      flex: 1;
       padding: 20px;
     }
 
-    /* Bot Panel */
-    .panel {
-      position: fixed;
-      top: 56px;
-      left: 200px;
-      width: calc(100% - 200px);
-      height: 100%;
-      background-color: #fff;
-      z-index: 1000;
-      transition: transform 0.3s ease-in-out;
-      transform: translateX(100%);
-      box-shadow: -5px 0 5px rgba(0, 0, 0, 0.1);
-      overflow-y: auto;
+    .main-header {
+      margin-bottom: 20px;
     }
 
-    .panel.show {
-      transform: translateX(0);
+    .main-header .navbar-brand {
+      color: #ffffff;
+      font-weight: bold;
     }
 
-    .bot-card {
-      cursor: pointer;
-      background-color: #f8f9fa;
-      padding: 20px;
-      border-radius: 8px;
-      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-      transition: background-color 0.3s;
+    .main-header .navbar-nav .nav-item .nav-link {
+      color: #ffffff;
     }
 
-    .bot-card:hover {
-      background-color: #e9ecef;
+    .main-header .navbar-nav .nav-item .nav-link:hover {
+      color: #cccccc;
+    }
+
+    .main-footer {
+      margin-top: 20px;
+      text-align: center;
+      color: #ffffff;
     }
   </style>
+
 </head>
+
 <body>
 
-<!-- Navbar -->
-<nav class="navbar navbar-dark bg-dark">
-  <div class="container">
-    <a class="navbar-brand" href="#">
-      <img src="https://via.placeholder.com/150" alt="Logo">
-    </a>
-    <!-- Navbar content -->
-  </div>
-</nav>
+  <div class="wrapper">
 
-<!-- Sidenav -->
-<nav class="sidenav">
-  <a href="#">Link 1</a>
-  <a href="#">Link 2</a>
-  <a href="#">Link 3</a>
-  <!-- Add more links as needed -->
-</nav>
-
-<!-- Page Content -->
-<main class="page-content">
-  <div class="container">
-    <div class="row">
-      <div class="col-md-8">
-        <h1 class="page-title">Welcome to Bot Panel</h1>
-        <!-- Your main content here -->
-        <div class="bot-card" onclick="togglePanel()">Click here to reveal the panel</div>
+    <!-- Sidebar -->
+    <aside class="sidebar">
+      <div class="sidebar-header">
+        <h3>Bot Hosting Panel</h3>
       </div>
+
+      <ul class="sidebar-menu">
+        <li class="sidebar-item"><a href="/servers.html"><i class="fas fa-server"></i> <span>Servers</span></a></li>
+        <li class="sidebar-item"><a href="/files.html"><i class="fas fa-file"></i> <span>File Manager</span></a></li>
+        <li class="sidebar-item"><a href="/settings.html"><i class="fas fa-cog"></i> <span>Settings</span></a></li>
+      </ul>
+    </aside>
+
+    <!-- Page Content -->
+    <div class="content">
+
+      <!-- Header -->
+      <header class="main-header">
+        <nav class="navbar navbar-expand-lg">
+          <div class="container-fluid">
+            <a class="navbar-brand" href="#">BHP</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+              aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+              <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+              <ul class="navbar-nav ms-auto">
+                <li class="nav-item">
+                  <a class="nav-link" href="#"><i class="fas fa-user"></i> Mindset</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="#"><i class="fas fa-sign-out-alt"></i> Sign out</a>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </nav>
+      </header>
+
+      <!-- Page Content -->
+      <div class="page-content">
+        <div class="container-fluid">
+          <!-- Dashboard Content -->
+          <h1>Welcome to Bot Hosting Panel</h1>
+          <p>This is the dashboard page.</p>
+        </div>
+      </div>
+
+      <!-- Footer -->
+      <footer class="main-footer">
+        <div class="container-fluid">
+          <p>&copy; 2022 BotHosting. All rights reserved.</p>
+        </div>
+      </footer>
+
     </div>
-  </div>
-</main>
 
-<!-- Bot Panel -->
-<div class="panel" id="panel">
-  <div class="container">
-    <h2>Panel Content</h2>
-    <!-- Add your panel content here -->
   </div>
-</div>
 
-<script>
-  function togglePanel() {
-    var panel = document.getElementById("panel");
-    panel.classList.toggle("show");
-  }
-</script>
+  <!-- JavaScript -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
 
 </body>
+
 </html>
