@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -9,151 +8,202 @@
   <!-- CSS -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.3.0/css/bootstrap.min.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+  
   <style>
+    :root {
+      --primary-color: #2c3e50; /* Darker primary color */
+      --secondary-color: #ecf0f1; /* Lighter secondary color */
+      --accent-color: #3498db; /* Accent color */
+    }
+    
     body {
       margin: 0;
-      padding: 0;
       font-family: Arial, sans-serif;
-      background-image: url('background.webp');
-      background-size: cover;
-      background-position: center;
-      color: #ffffff;
+      color: var(--secondary-color);
+      background-color: #1f1f1f; /* Super dark background */
     }
 
-    .wrapper {
-      display: flex;
-      height: 100vh;
-    }
-
+    /* Sidebar */
     .sidebar {
+      position: fixed;
+      top: 0;
+      left: 0;
       width: 250px;
-      background-color: #333333;
-      padding-top: 20px;
+      height: 100vh;
+      background: var(--primary-color);
+      transition: width 0.3s;
+      box-shadow: 0 0 20px rgba(0, 0, 0, 0.3); /* Shadow effect */
     }
 
-    .sidebar-header {
-      text-align: center;
-      padding-bottom: 20px;
+    /* Navbar */
+    .navbar {
+      background: var(--primary-color);
+      color: var(--secondary-color);
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Shadow effect */
     }
 
-    .sidebar-menu {
-      list-style: none;
-      padding-left: 0;
-    }
-
-    .sidebar-item {
-      margin-bottom: 10px;
-    }
-
-    .sidebar-item a {
-      color: #ffffff;
-      text-decoration: none;
-      display: block;
-      padding: 10px;
-    }
-
-    .sidebar-item a:hover {
-      background-color: #444444;
-    }
-
+    /* Content */
     .content {
-      flex: 1;
-      padding: 20px;
+      margin-left: 250px;
+      transition: margin 0.3s;
     }
 
-    .main-header {
-      margin-bottom: 20px;
+    /* Sidebar and content collapsed state */
+    .sidebar.collapsed {
+      width: 80px;
     }
 
-    .main-header .navbar-brand {
-      color: #ffffff;
-      font-weight: bold;
+    .content.collapsed {
+      margin-left: 80px;
     }
 
-    .main-header .navbar-nav .nav-item .nav-link {
-      color: #ffffff;
-    }
+    /* Media Query for Mobile */
+    @media (max-width: 768px) {
+      .sidebar {
+        width: 80px;
+      }
 
-    .main-header .navbar-nav .nav-item .nav-link:hover {
-      color: #cccccc;
-    }
+      .content {
+        margin-left: 80px;
+      }
 
-    .main-footer {
-      margin-top: 20px;
-      text-align: center;
-      color: #ffffff;
+      .content.collapsed {
+        margin-left: 0;
+      }
     }
   </style>
-
 </head>
-
 <body>
 
-  <div class="wrapper">
+  <!-- Sidebar -->
+  <aside id="sidebar" class="sidebar">
 
-    <!-- Sidebar -->
-    <aside class="sidebar">
-      <div class="sidebar-header">
-        <h3>Bot Hosting Panel</h3>
-      </div>
-
-      <ul class="sidebar-menu">
-        <li class="sidebar-item"><a href="/servers.html"><i class="fas fa-server"></i> <span>Servers</span></a></li>
-        <li class="sidebar-item"><a href="/files.html"><i class="fas fa-file"></i> <span>File Manager</span></a></li>
-        <li class="sidebar-item"><a href="/settings.html"><i class="fas fa-cog"></i> <span>Settings</span></a></li>
-      </ul>
-    </aside>
-
-    <!-- Page Content -->
-    <div class="content">
-
-      <!-- Header -->
-      <header class="main-header">
-        <nav class="navbar navbar-expand-lg">
-          <div class="container-fluid">
-            <a class="navbar-brand" href="#">BHP</a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
-              aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-              <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarNav">
-              <ul class="navbar-nav ms-auto">
-                <li class="nav-item">
-                  <a class="nav-link" href="#"><i class="fas fa-user"></i> Mindset</a>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link" href="#"><i class="fas fa-sign-out-alt"></i> Sign out</a>
-                </li>
-              </ul>
-            </div>
-          </div>
-        </nav>
-      </header>
-
-      <!-- Page Content -->
-      <div class="page-content">
-        <div class="container-fluid">
-          <!-- Dashboard Content -->
-          <h1>Welcome to Bot Hosting Panel</h1>
-          <p>This is the dashboard page.</p>
-        </div>
-      </div>
-
-      <!-- Footer -->
-      <footer class="main-footer">
-        <div class="container-fluid">
-          <p>&copy; 2022 BotHosting. All rights reserved.</p>
-        </div>
-      </footer>
-
+    <div class="sidebar-header text-light">
+      <h3>BotHosting</h3>
     </div>
 
-  </div>
+    <ul class="sidebar-menu">
+      <li class="sidebar-item">
+        <a href="#" class="text-light"><i class="fas fa-server"></i> Servers</a>
+      </li>
+      <li class="sidebar-item">
+        <a href="#" class="text-light"><i class="fas fa-folder"></i> Files</a>
+      </li>
+      <li class="sidebar-item">
+        <a href="#" class="text-light"><i class="fas fa-cog"></i> Settings</a>
+      </li>
+    </ul>
+
+  </aside>
+
+  <!-- Content -->
+  <main class="content">
+
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+      <div class="container-fluid">
+
+        <a class="navbar-brand" href="#">BotHosting</a>
+
+        <button class="navbar-toggler" type="button">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse">
+          <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+            <li class="nav-item">
+              <a class="nav-link text-light" href="#">
+                <i class="fas fa-user"></i>
+                Welcome, John
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link text-light" href="#">
+                <i class="fas fa-sign-out-alt"></i>
+                Logout
+              </a>
+            </li>
+          </ul>
+        </div>
+
+      </div>
+    </nav>
+
+    <!-- Page Content -->
+    <section id="dash" class="p-4">
+
+      <!-- Page Header -->
+      <div class="d-flex align-items-center">
+        <h1 class="h3 text-light">Dashboard</h1>
+      </div>
+
+      <!-- Server Status -->
+      <div class="card bg-dark text-light mb-4">
+        <div class="card-body">
+          <h5 class="card-title">Server Status</h5>
+          
+          <!-- Server Status List -->
+          <table class="table table-dark">
+            <thead>
+              <tr>
+                <th scope="col">#</th>
+                <th scope="col">Name</th>
+                <th scope="col">Status</th>
+                <th scope="col">Uptime</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <th scope="row">1</th>
+                <td>Server 1</td>
+                <td><span class="badge bg-success">Online</span></td>
+                <td>2 days</td>
+              </tr>
+              <tr>
+                <th scope="row">2</th>
+                <td>Server 2</td>     
+                <td><span class="badge bg-danger">Offline</span></td>
+                <td>-</td>
+              </tr>
+            </tbody>
+          </table>
+
+        </div>
+      </div>
+
+      <!-- Quick Actions -->
+      <div class="card bg-dark text-light">
+        <div class="card-body">
+          <h5 class="card-title">Quick Actions</h5>
+          
+          <div class="d-grid gap-2">
+            <button class="btn btn-primary">Add Server</button>
+            <button class="btn btn-secondary">Upload Files</button>
+            <button class="btn btn-warning">Check Updates</button>
+          </div>
+
+        </div>
+      </div>
+      
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-primary text-light p-3">
+      <p class="text-center">Copyright &copy; BotHosting 2022</p>
+    </footer>
+
+  </main>
 
   <!-- JavaScript -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
+  
+  <script>
+    // Toggle sidebar
+    $('.navbar-toggler').click(function() {
+      $('#sidebar, .content').toggleClass('collapsed'); 
+    });
+  </script>
 
 </body>
-
 </html>
